@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rap.mapper.ProjectMapper">
+
+  <insert id="insert" parameterType="com.rap.mapper.ProjectMapper">
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="remark != null">
+        #{remark},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.rap.mapper.ProjectMapper">
+  update project
+  <set>
+    <if test="name != null">
+      `name` = #{name},
+    </if>
+    <if test="remark != null">
+      remark = #{remark},
+    </if>
+
+  </set>
+  where id = #{id}
+  </update>
+
+  <select id="list"   resultType="com.rap.mapper.ProjectMapper">
+    select * from project
+  </select>
+</mapper>
