@@ -7,3 +7,5 @@ spring:
     username: root
     password: mysql2019
 
+mybatis:
+  mapper-locations: classpath:mapper/**.xml
