@@ -10,6 +10,6 @@ import java.util.List;
 @Mapper
 public interface ProjectMapper {
     int insert(Project record);
-    List<Project> list();
+    List<Project> list(String info);
     int update(Project record);
 }

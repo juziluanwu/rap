@@ -36,7 +36,12 @@
   where id = #{id}
   </update>
 
-  <select id="list"   resultType="com.rap.entity.Project">
+  <select id="list" parameterType="String"  resultType="com.rap.entity.Project">
     select * from project
+    <where>
+    <if test="info != null and info !=''">
+      and name like '%${info}%'
+    </if>
+  </where>
   </select>
 </mapper>

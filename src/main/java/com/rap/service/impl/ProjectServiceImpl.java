@@ -13,12 +13,17 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectMapper projectMapper;
 
     @Override
-    public List<Project> list() {
-        return projectMapper.list();
+    public List<Project> list(String info) {
+        return projectMapper.list(info);
     }
 
     @Override
     public void insert(Project project) {
         projectMapper.insert(project);
+    }
+
+    @Override
+    public void update(Project project) {
+        projectMapper.update(project);
     }
 }

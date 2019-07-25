@@ -15,13 +15,18 @@ public class ProjectController {
     private ProjectService projectService;
 
     @GetMapping("/list")
-    public Result list() {
-        return ResultUtils.result(ErrorEnum.SUCCESS, projectService.list());
+    public Result list(@RequestParam(value = "info",required = false)String info) {
+        return ResultUtils.result(ErrorEnum.SUCCESS, projectService.list(info));
     }
 
     @PostMapping("/save")
     public Result save(@RequestBody Project record) {
         projectService.insert(record);
         return ResultUtils.result(ErrorEnum.SUCCESS, "新增成功");
+    }
+    @PostMapping("/update")
+    public Result update(@RequestBody Project record) {
+        projectService.update(record);
+        return ResultUtils.result(ErrorEnum.SUCCESS, "修改成功");
     }
 }

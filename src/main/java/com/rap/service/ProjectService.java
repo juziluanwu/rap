@@ -7,5 +7,7 @@ import java.util.List;
 public interface ProjectService {
     void insert(Project project);
 
-    List<Project> list();
+    List<Project> list(String info);
+
+    void update(Project project);
 }
