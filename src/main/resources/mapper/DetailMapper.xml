@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rap.mapper.DetailMapper">
+
+    <insert id="insert" parameterType="com.rap.entity.Detail" useGeneratedKeys="true" keyProperty="id">
+        insert into detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuid != null">
+                menuid,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="url != null">
+                `url`,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="requestparam != null">
+                requestparam,
+            </if>
+            <if test="responseparam != null">
+                responseparam,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="menuid != null">
+                #{menuid},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="requestparam != null">
+                #{requestparam},
+            </if>
+            <if test="responseparam != null">
+                #{responseparam},
+            </if>
+            <if test="version != null">
+                #{version},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.rap.entity.Detail">
+        update detail
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="menuid != null">
+                menuid = #{menuid},
+            </if>
+            <if test="type != null">
+                `type` = #{type},
+            </if>
+            <if test="url != null">
+                url = #{url},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="requestparam != null">
+                requestparam = #{requestparam},
+            </if>
+            <if test="responseparam != null">
+                responseparam = #{responseparam},
+            </if>
+            <if test="version != null">
+                version = #{version},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="list" parameterType="String" resultType="com.rap.entity.Detail">
+        select * from detail
+        <where>
+            <if test="name != null and name !=''">
+                and `name` like '%${name}%'
+            </if>
+        </where>
+    </select>
+    
+    <select id="info" parameterType="Integer" resultType="com.rap.entity.Detail">
+        select * from detail where id = #{id}
+    </select>
+</mapper>
