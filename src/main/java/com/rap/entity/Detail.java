@@ -13,7 +13,7 @@ public class Detail {
     private Integer menuid;
     private Integer type;
     private String url;
-    private Integer remark;
+    private String remark;
     private String requestparam;
     private String responseparam;
     private Integer version;
