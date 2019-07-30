@@ -5,8 +5,8 @@
     <insert id="insert" parameterType="com.rap.entity.Detail" useGeneratedKeys="true" keyProperty="id">
         insert into detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="menuid != null">
-                menuid,
+            <if test="fid != null">
+                fid,
             </if>
             <if test="name != null">
                 `name`,
@@ -32,10 +32,13 @@
             <if test="pid != null">
                 pid,
             </if>
+            <if test="iftype != null">
+                iftype,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="menuid != null">
-                #{menuid},
+            <if test="fid != null">
+                #{fid},
             </if>
             <if test="name != null">
                 #{name},
@@ -61,6 +64,9 @@
             <if test="pid != null">
                 #{pid},
             </if>
+            <if test="iftype != null">
+                #{iftype},
+            </if>
         </trim>
     </insert>
 
@@ -70,8 +76,8 @@
             <if test="name != null">
                 `name` = #{name},
             </if>
-            <if test="menuid != null">
-                menuid = #{menuid},
+            <if test="fid != null">
+                fid = #{menuid},
             </if>
             <if test="type != null">
                 `type` = #{type},
@@ -93,6 +99,9 @@
             </if>
             <if test="pid != null">
                 pid = #{pid},
+            </if>
+            <if test="iftype != null">
+                iftype = #{iftype},
             </if>
         </set>
         where id = #{id}
