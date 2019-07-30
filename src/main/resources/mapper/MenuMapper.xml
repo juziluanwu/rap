@@ -3,7 +3,7 @@
 <mapper namespace="com.rap.mapper.MenuMapper">
 
     <insert id="insert" parameterType="com.rap.entity.Menu" useGeneratedKeys="true" keyProperty="id">
-        insert into menu
+        insert into detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null">
                 `name`,
@@ -35,7 +35,7 @@
     </insert>
 
     <update id="update" parameterType="com.rap.entity.Menu">
-        update menu
+        update detail
         <set>
             <if test="name != null">
                 `name` = #{name},
@@ -54,6 +54,6 @@
     </update>
 
     <select id="list" parameterType="Integer" resultType="com.rap.entity.Menu">
-        select * from menu where pid = #{id}
+        select * from detail where pid = #{id}
     </select>
 </mapper>

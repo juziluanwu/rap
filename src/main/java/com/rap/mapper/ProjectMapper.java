@@ -1,5 +1,6 @@
 package com.rap.mapper;
 
+import com.rap.entity.Menu;
 import com.rap.entity.Project;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
@@ -12,4 +13,5 @@ public interface ProjectMapper {
     int insert(Project record);
     List<Project> list(String info);
     int update(Project record);
+    Menu selectById(Integer id);
 }

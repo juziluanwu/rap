@@ -16,5 +16,7 @@ public interface DetailMapper {
 
     int update(Detail record);
 
-    Detail info(Integer id);
+    Detail selectById(Integer id);
+
+    List<Detail> selectByProductid(Integer pid);
 }

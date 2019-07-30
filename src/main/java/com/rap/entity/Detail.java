@@ -10,11 +10,13 @@ import lombok.ToString;
 public class Detail {
     private Integer id;
     private String name;
-    private Integer menuid;
+    private Integer fid;
     private Integer type;
     private String url;
     private String remark;
     private String requestparam;
     private String responseparam;
     private Integer version;
+    private Integer pid;
+    private Integer iftype;
 }

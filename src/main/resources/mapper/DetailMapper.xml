@@ -29,6 +29,9 @@
             <if test="version != null">
                 version,
             </if>
+            <if test="pid != null">
+                pid,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="menuid != null">
@@ -54,6 +57,9 @@
             </if>
             <if test="version != null">
                 #{version},
+            </if>
+            <if test="pid != null">
+                #{pid},
             </if>
         </trim>
     </insert>
@@ -85,6 +91,9 @@
             <if test="version != null">
                 version = #{version},
             </if>
+            <if test="pid != null">
+                pid = #{pid},
+            </if>
         </set>
         where id = #{id}
     </update>
@@ -98,7 +107,11 @@
         </where>
     </select>
     
-    <select id="info" parameterType="Integer" resultType="com.rap.entity.Detail">
-        select * from detail where menuid = #{id}
+    <select id="selectById" parameterType="Integer" resultType="com.rap.entity.Detail">
+        select * from detail where id = #{id}
+    </select>
+
+    <select id="selectByProductid" parameterType="Integer" resultType="com.rap.entity.Detail">
+        select * from detail where pid = #{pid}
     </select>
 </mapper>

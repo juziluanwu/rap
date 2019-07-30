@@ -3,7 +3,7 @@
 <mapper namespace="com.rap.mapper.ProjectMapper">
 
   <insert id="insert" parameterType="com.rap.entity.Project" useGeneratedKeys="true" keyProperty="id">
-    insert into project
+    insert into detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         `name`,
@@ -23,7 +23,7 @@
   </insert>
 
   <update id="update" parameterType="com.rap.entity.Project">
-  update project
+  update detail
   <set>
     <if test="name != null">
       `name` = #{name},
@@ -37,11 +37,16 @@
   </update>
 
   <select id="list" parameterType="String"  resultType="com.rap.entity.Project">
-    select * from project
+    select * from detail
     <where>
+    `type` = 1
     <if test="info != null and info !=''">
       and name like '%${info}%'
     </if>
   </where>
+  </select>
+
+  <select id="selectById" parameterType="Integer" resultType="com.rap.entity.Menu">
+    select * from detail where id = #{id}
   </select>
 </mapper>

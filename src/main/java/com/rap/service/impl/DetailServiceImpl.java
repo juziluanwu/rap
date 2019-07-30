@@ -21,11 +21,12 @@ public class DetailServiceImpl implements DetailService {
         return detailMapper.list(name);
     }
     public Detail info(Integer id){
-        return detailMapper.info(id);
+        return detailMapper.selectById(id);
     }
 
     @Override
     public void insert(Detail detail) {
+        detail.setVersion(1);
         detailMapper.insert(detail);
     }
 
