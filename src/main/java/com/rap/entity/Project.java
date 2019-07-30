@@ -11,4 +11,5 @@ public class Project {
     private Integer id;
     private String name;
     private String remark;
+    private Integer type;
 }

@@ -19,6 +19,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void insert(Project project) {
+        project.setType(1);
         projectMapper.insert(project);
     }
 
