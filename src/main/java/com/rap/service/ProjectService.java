@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProjectService {
-    void insert(Project project);
+    Project insert(Project project);
 
     List<Project> list( Map<String,Object> param );
 

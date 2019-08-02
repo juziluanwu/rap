@@ -36,8 +36,8 @@ public class ProjectController {
 
     @PostMapping("/save")
     public Result save(@RequestBody Project record) {
-        projectService.insert(record);
-        return ResultUtils.result(ErrorEnum.SUCCESS, "新增成功");
+
+        return ResultUtils.result(ErrorEnum.SUCCESS, projectService.insert(record));
     }
 
     @PostMapping("/update")

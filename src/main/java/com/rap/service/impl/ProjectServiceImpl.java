@@ -25,13 +25,19 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void insert(Project project) {
+    public Project insert(Project project) {
         project.setVersion(1);
         projectMapper.insert(project);
+        return project;
     }
 
     @Override
     public void update(Project project) {
+        Project oldp = projectMapper.selectById(project.getId());
+        if(oldp != null && !oldp.getVersion().equals(project.getVersion())){
+
+        }
+
         projectMapper.update(project);
     }
 
