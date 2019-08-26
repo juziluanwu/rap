@@ -129,4 +129,12 @@
     <select id="selectByProductid" parameterType="Integer" resultType="com.rap.entity.Project">
         select * from project where pid = #{pid}
     </select>
+
+    <delete id="batchdelete" parameterType="list">
+        delete from project  where id in
+        <foreach collection="list" item="item" index="no" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

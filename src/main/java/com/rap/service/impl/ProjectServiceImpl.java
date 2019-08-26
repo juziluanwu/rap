@@ -3,6 +3,7 @@ package com.rap.service.impl;
 import com.rap.entity.Project;
 import com.rap.mapper.ProjectMapper;
 import com.rap.service.ProjectService;
+import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,23 @@ public class ProjectServiceImpl implements ProjectService {
             tree.addAll(child);
         }
         return tree;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        List<Integer> list = new ArrayList<>();
+        list.add(id);
+        digui(list,id);
+        projectMapper.batchdelete(list);
+    }
+
+    private void digui(List<Integer> list,Integer id){
+        List<Project> child = projectMapper.selectByProductid(id);
+        if(child != null && !child.isEmpty()){
+            for(Project project:child){
+                list.add(project.getId());
+                digui(list,project.getId());
+            }
+        }
     }
 }

@@ -15,4 +15,6 @@ public interface ProjectService {
     void update(Project project);
 
     List<Project> tree(Integer pid);
+
+    void delete(Integer id);
 }

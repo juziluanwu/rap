@@ -45,4 +45,10 @@ public class ProjectController {
         projectService.update(record);
         return ResultUtils.result(ErrorEnum.SUCCESS, "修改成功");
     }
+
+    @PostMapping("/delete/{id}")
+    public Result delete(@PathVariable("id") Integer id) {
+        projectService.delete(id);
+        return ResultUtils.result(ErrorEnum.SUCCESS, "删除成功");
+    }
 }
