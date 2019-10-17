@@ -39,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Result update(Project project) {
         Project oldp = projectMapper.selectById(project.getId());
         if(oldp != null && !oldp.getVersion().equals(project.getVersion())){
-            return ResultUtils.fail("改接口已被修改，无法保存");
+            return ResultUtils.fail("该接口已被修改，无法保存");
         }
         project.setVersion(project.getVersion()+1);
         projectMapper.update(project);
