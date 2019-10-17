@@ -42,8 +42,8 @@ public class ProjectController {
 
     @PostMapping("/update")
     public Result update(@RequestBody Project record) {
-        projectService.update(record);
-        return ResultUtils.result(ErrorEnum.SUCCESS, "修改成功");
+        return projectService.update(record);
+
     }
 
     @PostMapping("/delete/{id}")

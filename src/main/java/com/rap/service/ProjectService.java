@@ -1,6 +1,7 @@
 package com.rap.service;
 
 import com.rap.entity.Project;
+import com.rap.entity.Result;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ public interface ProjectService {
 
     Project info(Integer id);
 
-    void update(Project project);
+    Result update(Project project);
 
     List<Project> tree(Integer pid);
 

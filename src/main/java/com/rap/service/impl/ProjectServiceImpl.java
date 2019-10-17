@@ -1,8 +1,11 @@
 package com.rap.service.impl;
 
 import com.rap.entity.Project;
+import com.rap.entity.Result;
+import com.rap.enums.ErrorEnum;
 import com.rap.mapper.ProjectMapper;
 import com.rap.service.ProjectService;
+import com.rap.utils.ResultUtils;
 import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,13 +36,14 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void update(Project project) {
+    public Result update(Project project) {
         Project oldp = projectMapper.selectById(project.getId());
         if(oldp != null && !oldp.getVersion().equals(project.getVersion())){
-
+            return ResultUtils.fail("改接口已被修改，无法保存");
         }
-
+        project.setVersion(project.getVersion()+1);
         projectMapper.update(project);
+        return ResultUtils.result(ErrorEnum.SUCCESS,"修改完成");
     }
 
     @Override
