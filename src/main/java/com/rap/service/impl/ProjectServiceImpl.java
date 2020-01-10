@@ -6,7 +6,6 @@ import com.rap.enums.ErrorEnum;
 import com.rap.mapper.ProjectMapper;
 import com.rap.service.ProjectService;
 import com.rap.utils.ResultUtils;
-import org.springframework.beans.PropertyAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,23 +37,23 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Result update(Project project) {
         Project oldp = projectMapper.selectById(project.getId());
-        if(oldp != null && !oldp.getVersion().equals(project.getVersion())){
+        if (oldp != null && !oldp.getVersion().equals(project.getVersion())) {
             return ResultUtils.fail("该接口已被修改，无法保存");
         }
-        project.setVersion(project.getVersion()+1);
+        project.setVersion(project.getVersion() + 1);
         projectMapper.update(project);
-        return ResultUtils.result(ErrorEnum.SUCCESS,"修改完成");
+        return ResultUtils.result(ErrorEnum.SUCCESS, "修改完成");
     }
 
     @Override
     public List<Project> tree(Integer pid) {
-        List<Project> tree = new ArrayList<>();
+        List<Project> tree = projectMapper.selectByProductid(pid);
         Project project = projectMapper.selectById(pid);
-        tree.add(project);
-        List<Project> child = projectMapper.selectByProductid(pid);
-        if (child != null && !child.isEmpty()) {
-            tree.addAll(child);
+        if (tree == null) {
+            tree = new ArrayList<>();
         }
+        tree.add(project);
+
         return tree;
     }
 
@@ -62,16 +61,16 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(Integer id) {
         List<Integer> list = new ArrayList<>();
         list.add(id);
-        digui(list,id);
+        digui(list, id);
         projectMapper.batchdelete(list);
     }
 
-    private void digui(List<Integer> list,Integer id){
+    private void digui(List<Integer> list, Integer id) {
         List<Project> child = projectMapper.selectByProductid(id);
-        if(child != null && !child.isEmpty()){
-            for(Project project:child){
+        if (child != null && !child.isEmpty()) {
+            for (Project project : child) {
                 list.add(project.getId());
-                digui(list,project.getId());
+                digui(list, project.getId());
             }
         }
     }
