@@ -5,7 +5,8 @@ package com.rap.enums;
  */
 public enum ErrorEnum {
 
-	SUCCESS(true, 0, "成功")
+	SUCCESS(true, 0, "成功"),
+	ERROR_PARAM(false, -5, "缺少参数")
 	;
 	private Boolean isSuccess;
 	private Integer code;

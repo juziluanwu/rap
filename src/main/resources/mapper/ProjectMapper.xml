@@ -127,7 +127,7 @@
     </select>
 
     <select id="selectByProductid" parameterType="Integer" resultType="com.rap.entity.Project">
-        select * from project where pid = #{pid}
+        select id,fid,`name`,version,pid,`type` from project where pid = #{pid}
     </select>
 
     <delete id="batchdelete" parameterType="list">
