@@ -121,7 +121,7 @@
             </if>
         </where>
     </select>
-    
+
     <select id="selectById" parameterType="Integer" resultType="com.rap.entity.Project">
         select * from project where id = #{id}
     </select>
@@ -131,10 +131,11 @@
     </select>
 
     <delete id="batchdelete" parameterType="list">
-        delete from project  where id in
-        <foreach collection="list" item="item" index="no" open="("
-                 separator="," close=")">
+        delete from project where id in (
+        <foreach collection="list" item="item" index="no"
+                 separator=",">
             #{item}
         </foreach>
+        )
     </delete>
 </mapper>
