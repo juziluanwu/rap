@@ -35,6 +35,9 @@
             <if test="iftype != null">
                 iftype,
             </if>
+            <if test="creator != null">
+                creator,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="fid != null">
@@ -66,6 +69,9 @@
             </if>
             <if test="iftype != null">
                 #{iftype},
+            </if>
+            <if test="creator != null">
+                #{creator},
             </if>
         </trim>
     </insert>
@@ -102,6 +108,9 @@
             </if>
             <if test="iftype != null">
                 iftype = #{iftype},
+            </if>
+            <if test="creator != null">
+                creator = #{creator},
             </if>
         </set>
         where id = #{id}

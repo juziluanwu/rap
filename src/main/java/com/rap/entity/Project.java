@@ -1,12 +1,8 @@
 package com.rap.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class Project {
     private Integer id;
     private String name;
@@ -19,4 +15,5 @@ public class Project {
     private Integer version;
     private Integer pid;
     private Integer iftype;
+    private String creator;
 }
