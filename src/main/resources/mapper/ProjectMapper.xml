@@ -147,4 +147,8 @@
         </foreach>
         )
     </delete>
+
+    <select id="selectTreeByProductid" parameterType="Integer" resultType="com.rap.entity.Project">
+        select id,fid,CONCAT(`name`,'---',IFNULL(creator,'无')) AS name,version,pid,`type` from project where pid = #{pid}
+    </select>
 </mapper>

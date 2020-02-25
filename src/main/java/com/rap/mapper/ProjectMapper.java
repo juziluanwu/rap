@@ -22,5 +22,7 @@ public interface ProjectMapper {
 
     List<Project> selectByProductid(Integer pid);
 
+    List<Project> selectTreeByProductid(Integer pid);
+
     int batchdelete(@Param("list") List<Integer> list);
 }

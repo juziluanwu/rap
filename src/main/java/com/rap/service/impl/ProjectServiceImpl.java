@@ -47,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> tree(Integer pid) {
-        List<Project> tree = projectMapper.selectByProductid(pid);
+        List<Project> tree = projectMapper.selectTreeByProductid(pid);
         Project project = projectMapper.selectById(pid);
         if (tree == null) {
             tree = new ArrayList<>();
