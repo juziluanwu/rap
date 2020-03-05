@@ -11,6 +11,8 @@ public interface ProjectService {
 
     List<Project> list( Map<String,Object> param );
 
+    List<Project> childproject( Map<String,Object> param );
+
     Project info(Integer id);
 
     Result update(Project project);

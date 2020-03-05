@@ -25,6 +25,16 @@ public class ProjectController {
         param.put("type", type);
         return ResultUtils.result(ErrorEnum.SUCCESS, projectService.list(param));
     }
+
+    @GetMapping("/childproject")
+    public Result childproject(@RequestParam(value = "name", required = false) String name,
+                       @RequestParam("fid") Integer fid) {
+        Map<String, Object> param = new HashMap<>();
+        param.put("name", name);
+        param.put("fid", fid);
+        return ResultUtils.result(ErrorEnum.SUCCESS, projectService.childproject(param));
+    }
+
     @GetMapping("/tree")
     public Result tree(@RequestParam(value = "pid") Integer pid) {
         return ResultUtils.result(ErrorEnum.SUCCESS, projectService.tree(pid));

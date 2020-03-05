@@ -119,6 +119,9 @@
     <select id="list" parameterType="map" resultType="com.rap.entity.Project">
         select * from project
         <where>
+            <if test="fid != null">
+                and `fid` = #{fid}
+            </if>
             <if test="pid != null">
                 and `pid` = #{pid}
             </if>

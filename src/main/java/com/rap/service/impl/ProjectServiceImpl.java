@@ -23,6 +23,21 @@ public class ProjectServiceImpl implements ProjectService {
         return projectMapper.list(param);
     }
 
+    @Override
+    public List<Project> childproject(Map<String, Object> param) {
+        param.put("type",1);
+        List<Project> projects =  projectMapper.list(param);
+        if(projects == null || projects.isEmpty()){
+            projects= new ArrayList<>();
+            //如果没有子项目
+            Integer fid =(Integer)param.get("fid");
+            Project project = projectMapper.selectById(fid);
+            projects.add(project);
+        }
+        return projects;
+    }
+
+
     public Project info(Integer id) {
         return projectMapper.selectById(id);
     }
@@ -47,15 +62,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> tree(Integer pid) {
-        List<Project> tree = projectMapper.selectTreeByProductid(pid);
         Project project = projectMapper.selectById(pid);
+        List<Project> tree = projectMapper.selectTreeByProductid(pid);
         if (tree == null) {
             tree = new ArrayList<>();
         }
         tree.add(project);
-
         return tree;
     }
+
+
 
     @Override
     public void delete(Integer id) {
