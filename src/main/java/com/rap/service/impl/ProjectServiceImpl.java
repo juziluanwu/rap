@@ -25,12 +25,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> childproject(Map<String, Object> param) {
-        param.put("type",1);
-        List<Project> projects =  projectMapper.list(param);
-        if(projects == null || projects.isEmpty()){
-            projects= new ArrayList<>();
+        param.put("type", 1);
+        List<Project> projects = projectMapper.list(param);
+        if (projects == null || projects.isEmpty()) {
+            projects = new ArrayList<>();
             //如果没有子项目
-            Integer fid =(Integer)param.get("fid");
+            Integer fid = (Integer) param.get("fid");
             Project project = projectMapper.selectById(fid);
             projects.add(project);
         }
@@ -44,18 +44,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project insert(Project project) {
-        project.setVersion(1);
         projectMapper.insert(project);
         return project;
     }
 
     @Override
     public Result update(Project project) {
-        Project oldp = projectMapper.selectById(project.getId());
-        if (oldp != null && !oldp.getVersion().equals(project.getVersion())) {
-            return ResultUtils.fail("该接口已被修改，无法保存");
-        }
-        project.setVersion(project.getVersion() + 1);
         projectMapper.update(project);
         return ResultUtils.result(ErrorEnum.SUCCESS, "修改完成");
     }
@@ -70,7 +64,6 @@ public class ProjectServiceImpl implements ProjectService {
         tree.add(project);
         return tree;
     }
-
 
 
     @Override

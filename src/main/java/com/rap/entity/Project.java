@@ -12,7 +12,7 @@ public class Project {
     private String remark;
     private String requestparam;
     private String responseparam;
-    private Integer version;
+    private String version;
     private Integer pid;
     private Integer iftype;
     private String creator;
