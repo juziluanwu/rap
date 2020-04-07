@@ -17,8 +17,8 @@ public class TestController {
     private TestService testService;
 
     @GetMapping("/test")
-    public Result tree() {
+    public String tree() {
         testService.test();
-        return ResultUtils.result(ErrorEnum.SUCCESS, "");
+        return "success ";
     }
 }
