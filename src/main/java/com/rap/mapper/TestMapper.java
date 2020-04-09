@@ -21,4 +21,7 @@ public interface TestMapper {
     int updateAmount(@Param("id")Integer id,@Param("amount")BigDecimal amount);
 
     int insertdetail(Detail detail);
+    int insertdetail1(Detail detail);
+
+    Test selectForUpdate(Integer id);
 }

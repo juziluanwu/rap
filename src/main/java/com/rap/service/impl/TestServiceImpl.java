@@ -36,13 +36,18 @@ public class TestServiceImpl implements TestService {
 
     @Transactional(rollbackFor = Exception.class)
     public void a() {
+
         int random = new Random().nextInt(100) + 1;
+        Test test = testMapper.selectForUpdate(176);
         BigDecimal amount = new BigDecimal(random);
         testMapper.updateAmount(176, amount.negate());
         Detail detail = new Detail();
         detail.setAmount(amount);
         detail.setTestid(176);
-        testMapper.insertdetail(detail);
+        detail.setEndamount(test.getAmount().subtract(amount));
+//        testMapper.insertdetail(detail);
+        testMapper.insertdetail1(detail);
+
     }
 
     @Transactional(rollbackFor = Exception.class)

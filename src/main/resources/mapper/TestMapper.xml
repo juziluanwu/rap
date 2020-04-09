@@ -38,6 +38,29 @@
         </trim>
     </insert>
 
+
+    <insert id="insertdetail1" parameterType="com.rap.entity.Detail" useGeneratedKeys="true" keyProperty="id">
+        insert into detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="endamount != null">
+                `endamount`,
+            </if>
+
+            <if test="amount != null">
+                `amount`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="endamount != null">
+              #{endamount},
+            </if>
+
+            <if test="amount != null">
+                #{amount},
+            </if>
+        </trim>
+    </insert>
+
     <update id="update" parameterType="com.rap.entity.Test">
         update test
         <set>
@@ -60,4 +83,8 @@
          update test set amount = amount + #{amount}
           where id = #{id}
     </update>
+
+    <select id="selectForUpdate" parameterType="Integer" resultType="com.rap.entity.Test">
+        select * from test where id = #{id} for update
+    </select>
 </mapper>
