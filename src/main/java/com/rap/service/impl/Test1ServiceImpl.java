@@ -15,7 +15,7 @@ public class Test1ServiceImpl implements Test1Service {
 
     public void a() {
         Test t = new Test();
-        t.setName("1");
+        t.setName("1111111111");
         testMapper.insert(t);
     }
 
